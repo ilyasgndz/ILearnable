@@ -1,0 +1,6 @@
+WITH CTE AS(
+   SELECT [col1],
+       RN = ROW_NUMBER()OVER(PARTITION BY [col1] ORDER BY [col1])
+   FROM [dbo].[table]
+)
+DELETE FROM CTE WHERE RN > 1
